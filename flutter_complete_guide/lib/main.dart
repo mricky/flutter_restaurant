@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import './question.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,7 +30,8 @@ void main() => runApp(MyApp());
       home: Scaffold(
         appBar: AppBar(title: Text('Flutter Appbar'),),
         body: Column(children: <Widget>[
-          Text(questions[_questionIndex]),
+          Question(questions[_questionIndex]),
+          // Text(questions[_questionIndex]),
           RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,),
           RaisedButton(child: Text('Answer 1'),onPressed: ()=> 'anwer 3'),
           RaisedButton(child: Text('Answer 1'),onPressed: (){
