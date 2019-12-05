@@ -19,8 +19,10 @@ class MyApp extends StatelessWidget {
         body: Column(children: <Widget>[
           Text('The Questions ?'),
           RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,),
-          RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,),
-          RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,)
+          RaisedButton(child: Text('Answer 1'),onPressed: ()=> 'anwer 3'),
+          RaisedButton(child: Text('Answer 1'),onPressed: (){
+              print('anonymous function');
+          },)
         ],),
       ),
     );
