@@ -13,17 +13,7 @@ void main() => runApp(MyApp());
   }
 
   class _MyAppState extends State<MyApp> {
-    var _questionIndex = 0;
-    void answerQuestion(){
-      setState(() {
-           _questionIndex = _questionIndex + 1;
-      });
-   
-      print(_questionIndex);
-    }
-  @override
-  Widget build(BuildContext context) {
-     var questions =[
+    final questions = const [
        {
          'questionText': 'What\'s your favourite color?',
          'answers' : ['Black','Red','Green','White']
@@ -39,10 +29,26 @@ void main() => runApp(MyApp());
 
       
     ];
+    var _questionIndex = 0;
+    void answerQuestion(){
+      
+      
+      setState(() {
+           _questionIndex = _questionIndex + 1;
+      });
+   
+      print(_questionIndex);
+      // if(_questionIndex < questions.length){
+      //     print('we have moer question');
+      // }
+    }
+  @override
+  Widget build(BuildContext context) {
+     
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Flutter Appbar'),),
-        body: Column(children: <Widget>[
+        body: _questionIndex < questions.length ? Column(children: <Widget>[
           Question(
             questions[_questionIndex]['questionText']
           ),
@@ -54,7 +60,9 @@ void main() => runApp(MyApp());
           // Text(questions[_questionIndex]),
           // RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,),
           
-        ],),
+        ],) : Center(
+          child: Text('You Did It'),
+          ),
       ),
     );
   }
