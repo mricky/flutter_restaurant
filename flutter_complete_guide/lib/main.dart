@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
-
+import './quiz.dart';
+import './result.dart';
 void main() => runApp(MyApp());
 
   class MyApp extends StatefulWidget {
@@ -30,7 +29,7 @@ void main() => runApp(MyApp());
       
     ];
     var _questionIndex = 0;
-    void answerQuestion(){
+    void _answerQuestion(){
       
       
       setState(() {
@@ -48,21 +47,14 @@ void main() => runApp(MyApp());
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Flutter Appbar'),),
-        body: _questionIndex < questions.length ? Column(children: <Widget>[
-          Question(
-            questions[_questionIndex]['questionText']
-          ),
-          ...(questions[_questionIndex]['answers'] as List<String>)
-            .map((answers){
-            return Answer(answerQuestion,answers);
-          }).toList()
-       
-          // Text(questions[_questionIndex]),
-          // RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,),
-          
-        ],) : Center(
-          child: Text('You Did It'),
-          ),
+        body: _questionIndex < questions.length 
+            ?
+           Quiz(
+             answerQuestion: _answerQuestion,
+             questionIndex: _questionIndex, 
+             questions :questions)
+             :
+             Result(),
       ),
     );
   }
