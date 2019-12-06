@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,12 +32,12 @@ void main() => runApp(MyApp());
         appBar: AppBar(title: Text('Flutter Appbar'),),
         body: Column(children: <Widget>[
           Question(questions[_questionIndex]),
+          Answer(answerQuestion),
+          Answer(answerQuestion),
+          Answer(answerQuestion),
           // Text(questions[_questionIndex]),
-          RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,),
-          RaisedButton(child: Text('Answer 1'),onPressed: ()=> 'anwer 3'),
-          RaisedButton(child: Text('Answer 1'),onPressed: (){
-              print('anonymous function');
-          },)
+          // RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,),
+          
         ],),
       ),
     );
