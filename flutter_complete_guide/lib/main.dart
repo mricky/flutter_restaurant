@@ -24,17 +24,33 @@ void main() => runApp(MyApp());
   @override
   Widget build(BuildContext context) {
      var questions =[
-      'What\'s your favourite color?',
-      'What\'s your favourite animal?'
+       {
+         'questionText': 'What\'s your favourite color?',
+         'answers' : ['Black','Red','Green','White']
+       },
+       {
+         'questionText':  'What\'s your favourite animal?',
+         'answers' : ['Rabbit','Snake','Elephant']
+       },
+        {
+         'questionText':  'Who\'s your favourite instructor?',
+         'answers' : ['Mohammad','Ricky','Sikasep']
+       }
+
+      
     ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Flutter Appbar'),),
         body: Column(children: <Widget>[
-          Question(questions[_questionIndex]),
-          Answer(answerQuestion),
-          Answer(answerQuestion),
-          Answer(answerQuestion),
+          Question(
+            questions[_questionIndex]['questionText']
+          ),
+          ...(questions[_questionIndex]['answers'] as List<String>)
+            .map((answers){
+            return Answer(answerQuestion,answers);
+          }).toList()
+       
           // Text(questions[_questionIndex]),
           // RaisedButton(child: Text('Answer 1'),onPressed: answerQuestion,),
           
