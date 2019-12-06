@@ -15,23 +15,38 @@ void main() => runApp(MyApp());
     final questions = const [
        {
          'questionText': 'What\'s your favourite color?',
-         'answers' : ['Black','Red','Green','White']
+         'answers' : [
+           {'text':'Black', 'score':10},
+           {'text':'Red','score':5},
+           {'text':'Green','score':30},
+           {'text':'White', 'score':50}
+           ],
        },
        {
          'questionText':  'What\'s your favourite animal?',
-         'answers' : ['Rabbit','Snake','Elephant']
+         'answers' : [
+           {'text':'Rabbit','score':3},
+           {'text':'Snake','score':11},
+           {'text':'Elephant','score':5},
+           {'text':'Lion','score':9},
+           ],
        },
         {
          'questionText':  'Who\'s your favourite instructor?',
-         'answers' : ['Mohammad','Ricky','Sikasep']
+         'answers' : [
+           {'text':'Mohammad','score':1},
+           {'text':'Ricky','score':1},
+           {'text':'Sikasep','score':1}
+           ],
        }
 
       
     ];
     var _questionIndex = 0;
-    void _answerQuestion(){
-      
-      
+    var _totalScore = 0;
+    void _answerQuestion(int score){
+      _totalScore += score;
+
       setState(() {
            _questionIndex = _questionIndex + 1;
       });
@@ -53,8 +68,9 @@ void main() => runApp(MyApp());
              answerQuestion: _answerQuestion,
              questionIndex: _questionIndex, 
              questions :questions)
+           // Text(questions.toList().toString())
              :
-             Result(),
+             Result(_totalScore),
       ),
     );
   }
