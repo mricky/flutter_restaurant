@@ -84,7 +84,7 @@ class MyAppBar extends StatelessWidget {
               children: <Widget>[
                 Text('Location', style: TextStyle(color: Colors.black54),),
                 Text(
-                  'West bay, Qatar',
+                  'West Java, Bandung',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )
               ],
@@ -163,8 +163,169 @@ class MyActionButton extends StatelessWidget {
       ),
     );
   }
+}
+//FoodListView(),
+//SelectedTypeSection(),
+//MenuItemsList()
+class FoodListView extends StatelessWidget {
+    const FoodListView({
+      Key key,
+    }) : super(key: key);
 
-  //FoodListView(),
-  //SelectedTypeSection(),
-  //MenuItemsList()
+    @override
+    Widget build(BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: Container(
+          height: 160.0,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              ItemCard(),
+              ItemCard(),
+              ItemCard(),
+              ItemCard(),
+            ],
+          ),
+        ),
+      );
+    }
+  }
+
+  class ItemCard extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.only(right: 8.0),
+        child: Container(
+          height: 160.0,
+          width: 300.0,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(meatImage), fit : BoxFit.cover
+            )
+          ),
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: 160.0,
+                width: 300.0,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.black.withOpacity(0.1), Colors.black]
+                  )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                   Spacer(),
+                   Text(
+                     '25 % OFF',
+                     style : TextStyle(
+                     color: textYellow,
+                     fontWeight: FontWeight.bold,
+                     fontSize: 24.0,
+                     letterSpacing: 1.1,
+                     )
+                   ),
+                   Text(
+                     'ON FIRST ORDERS',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        letterSpacing: 1.1
+                      )  
+                   )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+        
+      );
+    }
+  }
+
+class SelectedTypeSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal:8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            height: 92.0,
+            width: 110.0,
+            color: greenLight,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  FontAwesomeIcons.footballBall,
+                  color: green,
+                ),
+                SizedBox(
+                  height: 4.0,
+                ),
+                Text(
+                  'Sports store',
+                  style: TextStyle(color: green, fontWeight: FontWeight.w500),
+                ),
+                
+              ],
+            ),
+          ),
+          Container(
+            height: 92.0,
+            width: 110.0,
+            color: redLight,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  FontAwesomeIcons.solidClock,
+                  color: red,
+                ),
+                SizedBox(
+                  height: 4.0,
+                ),
+                Text(
+                  'Book a Table',
+                  style: TextStyle(color: red, fontWeight: FontWeight.w500),
+                ),
+                
+              ],
+            ),
+          ),
+           Container(
+            height: 92.0,
+            width: 110.0,
+            color: redLight,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  FontAwesomeIcons.solidLaugh,
+                  color: blue,
+                ),
+                SizedBox(
+                  height: 4.0,
+                ),
+                Text(
+                  'Catering',
+                  style: TextStyle(color: blue, fontWeight: FontWeight.w500),
+                ),
+                
+              ],
+            ),
+          ),
+        ],),
+      
+    );
+  }
 }
