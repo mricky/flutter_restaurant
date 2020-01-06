@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:polygon_clipper/polygon_clipper.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,15 +42,59 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: MyAppBar(),  
+        floatingActionButton: MyActionButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: MyBottomNavBar(),  
         body: Container(
-        
+          child: ListView(
+            children: <Widget>[
+                SizedBox(height: 16.0),
+                MyAppBar(),
+                SizedBox(height: 16.0),
+                FoodListView(),
+                SizedBox(height: 16.0),
+                SelectedTypeSection(),
+                SizedBox(height: 16.0),
+                MenuItemsList()
+            ],
+          ),
       ),
     );
   }
 }
-
 class MyAppBar extends StatelessWidget {
+  const MyAppBar({
+    Key key,
+
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Icon(
+              Icons.grid_on,
+              color: Colors.grey,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Text('Location', style: TextStyle(color: Colors.black54),),
+                Text(
+                  'West bay, Qatar',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )
+              ],
+            )
+          ],
+        ),
+    );
+  }
+}
+class MyBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -100,7 +146,25 @@ class MyActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      height: 100.0,
+      width: 100.0,
+      child: ClipPolygon(
+        sides: 6,
+        child: Container(
+          color: iconYellow,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+            Icon(FontAwesomeIcons.book),
+            SizedBox(height: 4.0,),
+            Text('Menu', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),)
+          ],),
+        ),
+      ),
     );
   }
+
+  //FoodListView(),
+  //SelectedTypeSection(),
+  //MenuItemsList()
 }
