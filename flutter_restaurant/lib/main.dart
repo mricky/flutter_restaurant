@@ -7,11 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-     
-        primarySwatch: Colors.blue,
-      ),
+      title: 'Restauran Mobile App',
       home: MyHomePage(),
     );
   }
@@ -41,6 +37,66 @@ var blue = Color(0xFF398bcf);
 var blueLight = Color(0xFFc1dbee);
 
 class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        bottomNavigationBar: MyAppBar(),  
+        body: Container(
+        
+      ),
+    );
+  }
+}
+
+class MyAppBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      child: Container(
+        height: 60.0,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Icon(Icons.home),
+                  Text('Home', style: TextStyle(fontSize: 12.0),)
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Icon(Icons.search, color: Colors.black45),
+                  Text('Search', style: TextStyle(fontSize: 12.0))
+                ],
+              ),
+              Container(width: 100.0),
+              Column(
+                children: <Widget>[
+                  Icon(Icons.shop, color: Colors.black45),
+                  Text('Wishlist', style: TextStyle(fontSize: 12.0),)
+                ],
+              ),
+              Column(children: <Widget>[
+                Icon(Icons.shopping_cart, color: Colors.black45,),
+                Text('Cart', style: TextStyle(fontSize: 12.0),)
+              ],)
+            ],
+          ),
+        ),
+      ),
+      
+    );
+  }
+}
+
+class MyActionButton extends StatelessWidget {
+  const MyActionButton({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
