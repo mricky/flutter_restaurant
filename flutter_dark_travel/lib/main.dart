@@ -60,9 +60,9 @@ class MyHomePage extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: 16.0),
             TopSection(),
-            //SizedBox(height: 12.0),
-            //MainCarousel(),
-            //SecondHeader(),
+            SizedBox(height: 12.0),
+            MainCarousel(),
+            SecondHeader(),
             //SizedBox(height: 16.0),
             //SecondCarousel()
           ],
